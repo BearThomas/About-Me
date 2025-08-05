@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <title> bearThomas </title>
         <link rel="icon" type="image/png" href="../img/Icon.jpg"> <!-- set the icon of website -->
         <link rel="stylesheet" href="./StyleSheet.css">
@@ -10,6 +12,7 @@
         <div id="Head-div">
             <img src="../img/Icon.jpg" id="Head-div-Icon">
             <code id="Head-div-Title">BearThomas</code>
+            <div class="menu-toggle" >☰</div>
             <ul id="Head-div-List">
                 <li id="Head-div-List-Home">
                     <a id="Head-div-List-Home-Text"> 首页 </a>
@@ -36,8 +39,30 @@
                     <a id="Head-div-List-Blog-Text"> 我的博客 </a>
                 </li>
                 <li id="Head-div-List-Message">
-                    <a id="Head-div-List-Message-Text"> 我的项目 </a>
+                    <a id="Head-div-List-Message-Text"> 留言板 </a>
                 </li>
             </ul>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggle = document.querySelector('.menu-toggle');
+                const menu = document.getElementById('Head-div-List');
+                
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation(); // 防止事件冒泡
+                    menu.classList.toggle('active');
+                });
+                
+                // 点击页面其他区域关闭菜单
+                document.addEventListener('click', function() {
+                    menu.classList.remove('active');
+                });
+                
+                // 阻止菜单内部的点击事件冒泡
+                menu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+        </script>
     </body>
